@@ -1,18 +1,58 @@
-body {
-   background-color: rgb(146, 158, 193);
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300&display=swap');
+:root {
+    --main: rgb(255, 255, 255);
+    --secondary: #000000;
+    --book: #cbe2fe;
+
+    /* rgb(146, 158, 193); */
 }
 
-.add-book-container {
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Fredoka', sans-serif;
+}
+body {
+   background-color: var(--main);
+}
+ 
+.header-content {
     display: flex;
-    flex-direction: column;
-    gap: 200px;
+    justify-content: space-between;
+   /*  button no longer has a height to tall */
+    align-items: center;
+    background-color: var(--secondary);
+    width: 100vw;
+    height: 80px;
+    -webkit-box-shadow: 0px 1px 8px 2px rgba(75, 75, 75, 0.24);
+    -moz-box-shadow: 0px 1px 8px 2px rgba(75, 75, 75, 0.24);
+    box-shadow: 0px 1px 8px 2px rgba(75, 75, 75, 0.24);
+}
+
+#site-title {
+    display: flex;
+    align-items: center;
+    margin-left:20px;
+    font-size: 2.5rem;
+    margin-right: 20px;
+    color:var(--main);
+}
+
+#site-title img {
+    margin-right: 10px;
 }
 
 #add-new-book-btn {
-    display: grid;
-    margin: auto;
-    margin-top: 50px;
-    flex-grow: 0;
+    margin-right:20px;
+    background: none;
+    border:none;
+    cursor: pointer;
+}
+
+button img:hover {
+    transition:.5s ease-in-out;
+    scale: 1.2;
+    rotate: 180deg;
 }
 
 .new-book-form {
@@ -20,83 +60,126 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    background-color:rgb(227, 227, 227);
+    background-color: #cbe2fe99;
     padding: 10px;
     position:fixed;
-
+   
+    /* center perfectly */
     top: 50%;
     left: 50%;
-    /* center perfectly */
-    transform: translate(-50%, -50%);
-    width: 300px;
+    transform: translate(-60%, -60%);
+    width: clamp(200px, 20vw, 300px);
     height: 350px;
+    border-radius: 20px;
+   
+}
+
+.new-book-form-title {
+    padding-top: 10px;
+    white-space: nowrap;
+    font-size: 1.8rem;
+}
+
+.new-book-form input {
+    outline: none;
+    color:var(--secondary);
+    border:2px solid var(--main);
+    width: clamp(150px, 15vw, 250px);
+    height: 30px;
+    padding-left: 10px;
+    font-size: 1.1rem;
+    border-radius: 20px;
+}
+
+input:focus {
+    border:1.5px solid var(--secondary);
+}
+
+.new-book-form input[type='checkbox'] {
+    width: 20px;
+    height:20px;
+    accent-color: var(--book);
+    margin-left: 10px;
+}
+
+.new-book-form label {
+    font-size: 1.2rem;
+}
+
+/* hide number incrimenting arrows */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+#add-book-btn {
+    background:none;
+    border:none;
 }
 
 .container {
     margin: 0 auto;
     max-width: 910px;
 }
-  
 
+#all-books{
+    display: flex;
+    flex-wrap: wrap;
+
+}
 .book-card {
     display: flex;
     justify-content:center;
-    background-color: rgb(197, 197, 197);
+    background-color: var(--book);
+    vertical-align: top;
     display: inline-block;
-    width: 240px;
-    height: 440px;
-    box-shadow: 0 0 20px #aaa;
+    width: 260px;
+    height: 490px;
+    box-shadow: 0px 1px 8px 2px rgba(26, 26, 26, 0.24);
     margin: 25px;
     padding: 10px 10px 20px 10px;
-    vertical-align: top;
-    transition: height 1s;
+    border-radius: 15px;   
 }
 
 .title {
-    color: blue;
     font-size: 1.5rem;
+    text-align: center;
 }
 
 .info {
     display: flex;
     flex-direction: column;
     align-items: center;
-    white-space: nowrap;
 }
 
-/* .right-info {
-    display: inline-flex;
-    flex-direction: column;
-    color:green;
-} */
+.author, .pages {
+    white-space: nowrap;
+    font-size: 1.1rem;
+}
 
 p {
     margin: 8px;
 }
 
-
 .book-cover {
     width: 200px;
     height: 300px;
-    margin-left: 10px;
-    border: 3px solid rgba(0, 0, 0, 0.538);
-}
-
-.delete {
-    border: none;
-    background-color: rgb(228, 26, 103);
-    color: white;
-}
-
-.delete:hover {
-    background-color: rgb(207, 24, 94);
-    color: white;
+    margin-left: 27px;
+    margin-top: 10px;
+    border: 2px solid rgb(27, 27, 27);
 }
 
 .button-group {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
+    justify-content: space-around;
+    margin: 15px 0px;
+ 
 }
 
 .btn{
@@ -105,5 +188,15 @@ p {
     border-radius: 20px;
     border:none;
     font-size: 1.1rem;
+    color:var(--main);
 }
 
+.btn{
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.remove {
+    background-color:black;
+}

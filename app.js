@@ -28,12 +28,16 @@ Book.prototype.notRead = function () {
     this.read = false;
 }
 
-let rat = new Book('Gaming Rat','Rat King', 423, true, 'rat.jpg')
+let rat = new Book('Gaming Rat','Rat King', 423, true, 'rat.jpg');
 createBook(rat);
 
+
+
+
 function addBookToLibrary() {
+    /* const validation = doument.querySelector('.validation-text') */
     if(coverInput.validity.valid === true) {
-        let title = titleInput.value;
+        let title = titleInput.value
         let author = authorInput.value;
         let pages = pagesInput.value;
         let read = false;
@@ -54,17 +58,24 @@ function addBookToLibrary() {
     }
 }
 
+const body =  document.getElementsByTagName("BODY")[0]; 
+
+
 addBookBtn.addEventListener('click', () => {
-    addBookToLibrary();
-    console.table(myLibrary);
-    /* allBooks.style.filter = "none" */
-    newBookForm.style.display = 'none';
-    clearAllFields();
+
+    if (titleInput.value && authorInput.value && pagesInput.value) {
+        addBookToLibrary();
+        console.table(myLibrary);
+        /* allBooks.classList.remove('blur'); */
+        newBookForm.style.display = 'none';
+        clearAllFields();
+    }
 })
 
 addNewBookBtn.addEventListener('click', () => {
-   /* allBooks.style.filter = "blur(2px)" */
-   newBookForm.style.display = 'flex';
+   /*  allBooks.classList.add('blur'); */
+    newBookForm.style.display = 'flex';
+    addNewBookBtn.type = 'submit';
     clearAllFields();
 })
 
@@ -92,9 +103,12 @@ function createBook(book) {
     author.classList.add('info');
     pages.classList.add('info');
     title.classList.add('title');
+    author.classList.add('author');
+    pages.classList.add('pages');
     buttons.classList.add('button-group');
     readBtn.classList.add('btn');
     removeBtn.classList.add('btn');
+    removeBtn.classList.add('remove');
     removeBtn.textContent = 'Remove';
     removeBtn.value =  `${book.idNum}`;
     title.textContent = `"${book.title}"`;
@@ -103,19 +117,19 @@ function createBook(book) {
 
     if (readCheckbox.checked == true) {
         readBtn.textContent = 'Read';
-        readBtn.style.backgroundColor = 'green';
+        readBtn.style.backgroundColor = '#059669';
     } else {
         readBtn.textContent = 'Not Read';
-        readBtn.style.backgroundColor = 'red';
+        readBtn.style.backgroundColor = '#DC2626';
     }
     readBtn.addEventListener('click', (e) => {
         if (e.target.textContent === 'Read') {
             e.target.textContent = 'Not Read';
-            readBtn.style.backgroundColor = 'red';
+            readBtn.style.backgroundColor = '#DC2626';
         } 
         else{
             (e.target.textContent = 'Read') ;
-            readBtn.style.backgroundColor = 'green';
+            readBtn.style.backgroundColor = '#059669';
         }
     })
 

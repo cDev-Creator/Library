@@ -9,23 +9,30 @@
 </head>
 <body>
 
-<div class="add-book-container">
-    <button id='add-new-book-btn'>Add New Book</button> 
-  
-    <div class="new-book-form">
-        <input type="text" placeholder = title id="title" required> 
-        <input type="text" placeholder = author id="author" required> 
-        <input type="number" id="pages" name="pages" placeholder=pages min="1" max="5000" required> 
-        <div>
-            <label for="read-checkbox">Read</label>
-            <input type="checkbox" id="read-checkbox" name="checkbox" required>
-        </div>
-
-        <input type="url" id="cover" name="cover" placeholder="Cover URL">
-        <!-- accept="image/x-png,image/gif,image/jpeg" -->
-        <button id="add-book-btn">Add Book</button>
+<header>
+    <div class="header-content">
+        <h1 id="site-title"><img src="open-book.svg" width="40" height="40"> bookly</h1>
+        <button id='add-new-book-btn'><img src="plus.svg" width="50" height="50"></button> 
     </div>
-</div>
+   
+</header>
+
+<!-- <div id="add-book-container"> -->
+
+    <form class="new-book-form">
+        <h2 class="new-book-form-title">add a new book</h2>
+        <input type="text" placeholder=title id="title" required>
+        <input type="text" placeholder=author id="author" required> 
+        <input type="number" id="pages" name="pages" placeholder=pages min="1" max="5000" required> 
+        <input type="url" id="cover" name="cover" placeholder="cover URL">
+        <div>
+            <label for="read-checkbox">have you read it?</label>
+            <input type="checkbox" id="read-checkbox" name="checkbox">
+        </div>
+        <!-- accept="image/x-png,image/gif,image/jpeg" -->
+        <button id="add-book-btn"><img src="plus.svg" width="40" height="40"></button>
+    </form>
+<!-- </div> -->
 
 
     <div id="all-books">

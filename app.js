@@ -15,20 +15,21 @@ const modalClose = document.querySelector('.close');
 let idNum = 0;
 let myLibrary = [];
 
-function Book(title, author, pages, read, cover) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-  this.idNum = idNum;
-  this.Url = cover;
-} 
- 
-Book.prototype.haveRead = function () {
-    this.read = true;
-}
-Book.prototype.notRead = function () {
-    this.read = false;
+class Book {
+    constructor (title, author, pages, read, cover) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+        this.idNum = idNum;
+        this.Url = cover;
+    }
+    haveRead() {
+        this.read = true;
+    }
+    notRead() {
+        this.read = false;
+    }
 }
 
 let book2 = new Book('A Clockwork Orange','Anthony Burgess', 213, false, 'covers/book2.jpg');
